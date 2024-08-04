@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WENT FOR RENT</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="photo.png" alt="Logo">
+        </div>
+        <h1>WENT FOR RENT</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#listings">Listings</a></li>
+                <li><a href="#about-us">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <button class="login-button"  gap: 10px>Login</button>
+        <button class="login-button"  gap: 10px>Registration</button>
+    </header>
+
+    <section class="hero">
+        <h2>Find Your Perfect Rental Property</h2>
+    </section>
+
+    <section class="options">
+        <h2>Select Option</h2>
+        <div class="option-buttons">
+            <button class="option-button" data-type="vehicle">Vehicle</button>
+            <button class="option-button" data-type="house">House</button>
+            <button class="option-button" data-type="land">Land</button>
+            <button class="option-button" data-type="building">Building</button>
+        </div>
+
+        <div class="form-container">
+            <!-- Forms will be injected here based on the selected option -->
+        </div>
+    </section>
+
+    <section class="listings" id="listings">
+        <h2>Available Properties</h2>
+        <div class="property-container" id="property-container"></div>
+    </section>
+
+    <section class="filled-forms">
+        <h2>Filled Forms</h2>
+        <div id="forms-list"></div>
+    </section>
+
+    <footer>
+        <div class="logo">
+            <img src="photo.png" alt="Logo">
+        </div>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Our mission is to connect landlords and tenants efficiently.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: hehehuhu@gmail.com</p>
+                <p>Phone: +91 886622990</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/91886622990" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://twitter.com" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.google.com" target="_blank" class="social-icon"><i class="fab fa-google"></i></a>
+                </div>
+            </div>
+        </div>
+        <p>&copy; 2024 Rental Properties. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
+<style>
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #e0e0e0, #b3b3b3); /* Milder gradient */
+    color: #333;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(90deg, rgba(63,94,251,0.8) 0%, rgba(252,70,107,0.8) 100%); /* Milder gradient */
+    color: white;
+    padding: 20px 30px; /* Increased padding */
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Slightly stronger shadow */
+    transition: height 0.3s;
+    height: 120px; /* Increased height */
+}
+
+header.expanded {
+    height: 250px; /* Adjust based on content */
+}
+
+.logo img {
+    height: 60px; /* Increased logo size */
+    width: auto;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em; /* Increased font size */
+    flex: 1;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    transition: height 0.3s;
+}
+
+nav ul li {
+    margin: 0 15px; /* Increased margin */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ffecd2;
+}
+
+.login-button {
+    background-color: white;
+    color: #333;
+    border: none;
+    padding: 12px 25px; /* Increased padding */
+    cursor: pointer;
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s;
+    margin: 0 10px; /* Space between buttons */
+}
+
+.login-button:hover {
+    background-color: #eee;
+}
+
+.hero {
+    background: linear-gradient(to right, #fefefe, #f9d5bb); /* Milder gradient */
+    color: #333; /* Darker text color for better contrast */
+    text-align: center;
+    padding: 80px 0; /* Adjusted padding */
+}
+
+.hero h2 {
+    font-size: 2em; /* Adjusted font size */
+    margin: 0;
+}
+
+.options {
+    padding: 30px; /* Increased padding */
+    text-align: center;
+}
+
+.option-buttons {
+    margin-bottom: 30px; /* Increased margin */
+}
+
+.option-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 25px; /* Increased padding */
+    cursor: pointer;
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s;
+    margin: 0 15px; /* Increased margin */
+}
+
+.option-button:hover {
+    background-color: #45a049;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-property {
+    text-align: center;
+    padding: 30px; /* Increased padding */
+    background: linear-gradient(to right, #f9d5bb, #fefefe); /* Milder gradient */
+    border-radius: 10px; /* Rounded corners */
+    margin: 30px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Increased shadow */
+}
+
+.add-property h2 {
+    margin-bottom: 20px;
+}
+
+.add-property form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-property label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.add-property input,
+.add-property select {
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 350px; /* Adjusted width */
+}
+
+.add-property button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 25px; /* Increased padding */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-property button:hover {
+    background-color: #45a049;
+}
+
+.filled-forms {
+    padding: 30px; /* Increased padding */
+    text-align: center;
+}
+
+.filled-forms #forms-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Footer styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 2em 1em;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex: 1;
+    margin: 1em;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+.social-icon {
+    color: #fff;
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    color: #ccc;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+
+footer .footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+footer .footer-section {
+    flex: 1;
+    margin: 10px;
+}
+
+footer .social-icons a {
+    margin: 0 10px;
+    color: white;
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+footer .social-icons a:hover {
+    color: #ccc;
+}
+
+
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const optionButtons = document.querySelectorAll('.option-button');
+    const formContainer = document.querySelector('.form-container');
+    const propertyContainer = document.querySelector('#property-container');
+    const formsList = document.querySelector('#forms-list');
+
+    // Form templates
+    const formTemplates = {
+        vehicle: `
+            <div class="add-property">
+                <h2>Add Vehicle</h2>
+                <form id="vehicle-form">
+                    <label for="vehicle-make">Make:</label>
+                    <input type="text" id="vehicle-make" name="vehicle-make" required>
+                    <label for="vehicle-model">Model:</label>
+                    <input type="text" id="vehicle-model" name="vehicle-model" required>
+                    <label for="vehicle-year">Year:</label>
+                    <input type="number" id="vehicle-year" name="vehicle-year" required>
+                    <label for="vehicle-price">Price:</label>
+                    <input type="number" id="vehicle-price" name="vehicle-price" required>
+                    <label for="vehicle-image">Upload Image:</label>
+                    <input type="file" id="vehicle-image" name="vehicle-image" accept="image/*" required>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        `,
+        house: `
+            <div class="add-property">
+                <h2>Add House</h2>
+                <form id="house-form">
+                    <label for="house-address">Address:</label>
+                    <input type="text" id="house-address" name="house-address" required>
+                    <label for="house-bedrooms">Bedrooms:</label>
+                    <input type="number" id="house-bedrooms" name="house-bedrooms" required>
+                    <label for="house-bathrooms">Bathrooms:</label>
+                    <input type="number" id="house-bathrooms" name="house-bathrooms" required>
+                    <label for="house-price">Price:</label>
+                    <input type="number" id="house-price" name="house-price" required>
+                    <label for="house-image">Upload Image:</label>
+                    <input type="file" id="house-image" name="house-image" accept="image/*" required>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        `,
+        land: `
+            <div class="add-property">
+                <h2>Add Land</h2>
+                <form id="land-form">
+                    <label for="land-location">Location:</label>
+                    <input type="text" id="land-location" name="land-location" required>
+                    <label for="land-size">Size (sq ft):</label>
+                    <input type="number" id="land-size" name="land-size" required>
+                    <label for="land-price">Price:</label>
+                    <input type="number" id="land-price" name="land-price" required>
+                    <label for="land-image">Upload Image:</label>
+                    <input type="file" id="land-image" name="land-image" accept="image/*" required>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        `,
+        building: `
+            <div class="add-property">
+                <h2>Add Building</h2>
+                <form id="building-form">
+                    <label for="building-address">Address:</label>
+                    <input type="text" id="building-address" name="building-address" required>
+                    <label for="building-units">Units:</label>
+                    <input type="number" id="building-units" name="building-units" required>
+                    <label for="building-price">Price:</label>
+                    <input type="number" id="building-price" name="building-price" required>
+                    <label for="building-image">Upload Image:</label>
+                    <input type="file" id="building-image" name="building-image" accept="image/*" required>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        `
+    };
+
+    // Event listeners
+    optionButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const type = this.getAttribute('data-type');
+            formContainer.innerHTML = formTemplates[type];
+        });
+    });
+
+    formContainer.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const propertyType = event.target.id.replace('-form', '');
+
+        const propertyDiv = document.createElement('div');
+        propertyDiv.classList.add('property');
+        propertyDiv.innerHTML = `
+            <h3>${propertyType.charAt(0).toUpperCase() + propertyType.slice(1)}</h3>
+            <p><strong>${formData.get(`${propertyType}-address`)} ${formData.get(`${propertyType}-location`) || ''}</strong></p>
+            <p>Price: ${formData.get(`${propertyType}-price`)}</p>
+            <img src="${URL.createObjectURL(formData.get(`${propertyType}-image`))}" alt="${propertyType}" width="150">
+        `;
+        propertyContainer.appendChild(propertyDiv);
+
+        // Add to filled forms list
+        const filledFormDiv = document.createElement('div');
+        filledFormDiv.classList.add('filled-form');
+        filledFormDiv.innerHTML = `
+            <h4>${propertyType.charAt(0).toUpperCase() + propertyType.slice(1)}</h4>
+            <p><strong>${formData.get(`${propertyType}-address`) || ''} ${formData.get(`${propertyType}-location`) || ''}</strong></p>
+            <p>Price: ${formData.get(`${propertyType}-price`)}</p>
+        `;
+        formsList.appendChild(filledFormDiv);
+
+        // Clear the form
+        event.target.reset();
+        formContainer.innerHTML = '';
+    });
+});
+
+</script>
